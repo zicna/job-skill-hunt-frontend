@@ -1,11 +1,12 @@
-import Form from "./components/Form"
-
+import SignInForm from './components/SignInForm'
+import SignUpForm from './components/SignUpForm'
 function App() {
   return (
     <div className="App">
-      < Form />
+      <SignInForm />
+      <SignUpForm/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
