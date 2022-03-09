@@ -17,19 +17,42 @@ export default class Form extends Component {
     event.preventDefault()
     // some code here
     // debugger
-    fetch('http://localhost:3001/users', {
-      method: 'POST',
+    // fetch('http://localhost:3001/users/sign_in', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(this.state)
+    // })
+    //   .then((response) => {
+    //     debugger
+    //     response.json()})
+    //   .then((data) => console.log(data))
+
+    fetch('http://localhost:3001/signup', {
+      method: 'post',
       headers: {
-        'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': true,
       },
-      body: JSON.stringify(this.state)
+      body: JSON.stringify({
+        user: {
+          email: this.state.email,
+          password: this.state.password,
+        },
+      }),
     })
-      .then((response) => {
-        debugger  
-        response.json()})
-      .then((data) => console.log(data))
+      .then((res) => {
+        if (res.ok) {
+          console.log(res.headers.get('Authorization'))
+          localStorage.setItem('token', res.headers.get('Authorization'))
+          return res.json()
+        } else {
+          throw new Error(res)
+        }
+      })
+      .then((json) => console.dir(json))
+      .catch((err) => console.error(err))
 
     //   reset form
     this.setState({ first_name: '', last_name: '', email: '', password: '' })
