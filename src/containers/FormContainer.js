@@ -4,7 +4,7 @@ import SignUpForm from '../components/forms/SignUpForm'
 import SignOutForm from '../components/forms/SignOutForm'
 
 
-export default function FormContainer() {
+const FormContainer = () => {
 
 
     const [render, setRender ] = useState(()=> {
@@ -28,3 +28,5 @@ export default function FormContainer() {
     <div>{renderForms()}</div>
   )
 }
+
+export default FormContainer
