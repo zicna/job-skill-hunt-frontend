@@ -1,10 +1,9 @@
-import SignInForm from './components/SignInForm'
-import SignUpForm from './components/SignUpForm'
+
+import FormContainer from './containers/FormContainer'
 function App() {
   return (
     <div className="App">
-      <SignInForm />
-      <SignUpForm/>
+      <FormContainer />
     </div>
   )
 }
