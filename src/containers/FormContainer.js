@@ -11,14 +11,9 @@ const FormContainer = () => {
         return !!localStorage.token
     })
 
-    const conditionalRender = () => {
-        console.log("conditional render was called")
-        setRender(!render)
-    }
-
     const renderForms = () => {
         if (render){
-            return < SignOutForm conditionalRender = {conditionalRender}/>
+            return < SignOutForm />
         }else{
             return <SignUpForm />
         }
