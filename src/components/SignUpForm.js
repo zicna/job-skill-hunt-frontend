@@ -15,20 +15,6 @@ export default class Form extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    // some code here
-    // debugger
-    // fetch('http://localhost:3001/users/sign_in', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(this.state)
-    // })
-    //   .then((response) => {
-    //     debugger
-    //     response.json()})
-    //   .then((data) => console.log(data))
 
     fetch('http://localhost:3001/signup', {
       method: 'post',
@@ -39,6 +25,8 @@ export default class Form extends Component {
         user: {
           email: this.state.email,
           password: this.state.password,
+          first_name: this.state.first_name,
+          last_name: this.state.last_name,
         },
       }),
     })
