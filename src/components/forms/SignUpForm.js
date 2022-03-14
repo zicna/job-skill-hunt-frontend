@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 
-export default class Form extends Component {
-  state = {
-    first_name: '',
-    last_name: '',
-    email: '',
-    password: '',
+export default class SignInForm extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      first_name: '',
+      last_name: '',
+      email: '',
+      password: '',
+    }
   }
 
   handleChange = (event) => {
@@ -44,6 +47,7 @@ export default class Form extends Component {
 
     //   reset form
     this.setState({ first_name: '', last_name: '', email: '', password: '' })
+    this.props.conditionalRender()
   }
 
   render() {
