@@ -12,18 +12,15 @@ export default function FormContainer() {
     })
 
     const conditionalRender = () => {
+        console.log("conditional render was called")
         setRender(!render)
     }
 
-    useEffect(() => {
-        console.log("render")
-    },[render])
-
     const renderForms = () => {
         if (render){
-            return < SignOutForm props = {conditionalRender}/>
+            return < SignOutForm conditionalRender = {conditionalRender}/>
         }else{
-            return <SignUpForm props = {conditionalRender}/>
+            return <SignUpForm />
         }
     }
     
