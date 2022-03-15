@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class SignInForm extends Component {
+export default class SignUpForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -12,7 +12,6 @@ export default class SignInForm extends Component {
   }
 
   handleChange = (event) => {
-    // console.log("change has been made")
     this.setState({ [event.target.name]: event.target.value })
   }
 
@@ -99,3 +98,4 @@ export default class SignInForm extends Component {
     )
   }
 }
+
