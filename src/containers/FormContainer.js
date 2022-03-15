@@ -1,5 +1,5 @@
 // import { render } from '@testing-library/react'
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import SignUpForm from '../components/forms/SignUpForm'
 import SignOutForm from '../components/forms/SignOutForm'
 

@@ -44,12 +44,12 @@ export default class SignUpForm extends Component {
       .then((json) => {
         this.props.setToken(!!localStorage.token)
         this.props.setUser(json.data)
+        this.setState({ first_name: '', last_name: '', email: '', password: '' })
         console.dir(json)
       })
       .catch((err) => console.error(err))
 
     //   reset form
-    this.setState({ first_name: '', last_name: '', email: '', password: '' })
   }
 
   render() {
