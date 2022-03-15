@@ -1,9 +1,15 @@
-
+import { BrowserRouter as Router } from 'react-router-dom'
 import FormContainer from './containers/FormContainer'
+
+import Header from './pages/Header'
+
 function App() {
   return (
     <div className="App">
-      <FormContainer />
+      <Router>
+        < Header/>
+        <FormContainer />
+      </Router>
     </div>
   )
 }
