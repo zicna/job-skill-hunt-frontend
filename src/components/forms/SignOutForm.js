@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const SignOutForm = ({ setToken }) => {
+const SignOutForm = ({ setToken, user, setUser }) => {
   const handleLogOut = () => {
     fetch('http://localhost:3001/logout', {
       method: 'delete',
@@ -20,6 +20,7 @@ const SignOutForm = ({ setToken }) => {
         console.log(json)
         localStorage.clear()
         setToken(!!localStorage.token)
+        setUser('')
       })
       .catch((err) => {
         console.log(err)
@@ -28,6 +29,7 @@ const SignOutForm = ({ setToken }) => {
 
   return (
     <div>
+      <div>hello `{user.first_name}`</div>
       <button onClick={handleLogOut}>Sign me out</button>
     </div>
   )

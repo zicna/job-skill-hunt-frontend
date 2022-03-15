@@ -5,12 +5,13 @@ import SignOutForm from '../components/forms/SignOutForm'
 
 const FormContainer = () => {
   const [token, setToken] = useState(!!localStorage.token)
+  const [user, setUser] = useState("")
 
   const renderForms = () => {
     if (token) {
-      return <SignOutForm setToken={setToken} />
+      return <SignOutForm setToken={setToken} user={user} setUser={setUser}/>
     } else {
-      return <SignUpForm setToken={setToken} />
+      return <SignUpForm setToken={setToken} setUser={setUser} />
     }
   }
 

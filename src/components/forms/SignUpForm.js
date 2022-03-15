@@ -44,6 +44,7 @@ export default class SignInForm extends Component {
       })
       .then((json) => {
         this.props.setToken(!!localStorage.token)
+        this.props.setUser(json.data)
         console.dir(json)
       })
       .catch((err) => console.error(err))
