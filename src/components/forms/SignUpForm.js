@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 export default class SignInForm extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       first_name: '',
@@ -42,12 +42,14 @@ export default class SignInForm extends Component {
           throw new Error(res)
         }
       })
-      .then((json) => console.dir(json))
+      .then((json) => {
+        this.props.setToken(!!localStorage.token)
+        console.dir(json)
+      })
       .catch((err) => console.error(err))
 
     //   reset form
     this.setState({ first_name: '', last_name: '', email: '', password: '' })
-    this.props.conditionalRender()
   }
 
   render() {

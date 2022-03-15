@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const SignOutForm = () => {
-
+const SignOutForm = ({ setToken }) => {
   const handleLogOut = () => {
     fetch('http://localhost:3001/logout', {
       method: 'delete',
@@ -18,14 +17,13 @@ const SignOutForm = () => {
         }
       })
       .then((json) => {
-        //   debugger
         console.log(json)
         localStorage.clear()
+        setToken(!!localStorage.token)
       })
       .catch((err) => {
-          debugger
-          console.log(err)
-        })
+        console.log(err)
+      })
   }
 
   return (
