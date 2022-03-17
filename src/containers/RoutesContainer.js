@@ -3,7 +3,6 @@ import {Switch, Route, Redirect} from 'react-router-dom'
 
 import {loggedIn} from '../helpers/AuthHelpers'
 
-
 import Home from '../pages/Home'
 import About from '../pages/About'
 import Contact from '../pages/Contact'
