@@ -3,8 +3,10 @@ import React, { useState} from 'react'
 import SignUpForm from '../components/forms/SignUpForm'
 import SignOutForm from '../components/forms/SignOutForm'
 
+import {loggedIn} from '../helpers/AuthHelpers'
+
 const FormContainer = () => {
-  const [token, setToken] = useState(!!localStorage.token)
+  const [token, setToken] = useState(loggedIn())
   const [user, setUser] = useState("")
 
   const renderForms = () => {
