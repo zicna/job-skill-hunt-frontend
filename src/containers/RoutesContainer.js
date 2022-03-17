@@ -15,7 +15,7 @@ const RoutesContainer = () => {
 return (
     <Switch>
         <Route exact path="/">
-            {loggedIn ? <Redirect to="/about" /> : <Home />}
+            {() => loggedIn() ? <Redirect to="/about" /> : <Home />}
         </Route>
         <Route exact path="/about" component={About} />
         <Route exact path="/about" component={(routerProps) => <AboutClass {...routerProps} />} />
