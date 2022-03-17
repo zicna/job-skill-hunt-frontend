@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
+import { removeToken, getToken } from '../../helpers/LocalStorageHelpers'
+ 
 const SignOutForm = ({ setToken, user, setUser }) => {
   const handleLogOut = () => {
     fetch('http://localhost:3001/logout', {
@@ -18,8 +20,8 @@ const SignOutForm = ({ setToken, user, setUser }) => {
       })
       .then((json) => {
         console.log(json)
-        localStorage.clear()
-        setToken(!!localStorage.token)
+        removeToken()
+        setToken(!!getToken())
         setUser('')
       })
       .catch((err) => {
