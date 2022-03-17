@@ -1,5 +1,7 @@
 import React from "react";
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
+
+import {loggedIn} from '../helpers/AuthHelpers'
 
 
 import Home from '../pages/Home'
@@ -13,7 +15,7 @@ const RoutesContainer = () => {
 return (
     <Switch>
         <Route exact path="/">
-            <Home/>
+            {loggedIn ? <Redirect to="/about" /> : <Home />}
         </Route>
         <Route exact path="/about" component={About} />
         <Route exact path="/about" component={(routerProps) => <AboutClass {...routerProps} />} />
@@ -24,3 +26,11 @@ return (
 }
 
 export default RoutesContainer
+
+{/* <Route exact path="/">
+    <Home/>
+</Route>
+<Route exact path="/about" component={About} />
+<Route exact path="/about" component={(routerProps) => <AboutClass {...routerProps} />} />
+<Route exact path="/contact" render={(renderProps)=><Contact {...renderProps} />} />
+<Route exact path="/legacy" children={({match})=> (<Legacy {...match}/>)} /> */}
