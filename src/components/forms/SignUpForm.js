@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// import {Redirect} from 'react-router-dom'
 
 export default class SignUpForm extends Component {
   constructor(props) {
@@ -44,12 +45,13 @@ export default class SignUpForm extends Component {
       })
       .then((json) => {
         this.props.setToken(!!localStorage.token)
-        this.props.setUser(json.data)
-        console.dir(json)
+        this.props.setUser(json.data);
+        // debugger
+        // window.location.assign('http://localhost:3000/')
+        // window.location.href = 'http://localhost:3000/'
+        
       })
       .catch((err) => console.error(err))
-
-    //   reset form
   }
 
   render() {

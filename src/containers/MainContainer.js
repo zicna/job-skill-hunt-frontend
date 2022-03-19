@@ -1,14 +1,14 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
 
-import FormContainer from './FormContainer'
+// import FormContainer from './FormContainer'
 import RoutesContainer from './RoutesContainer'
 
 const MainContainer = () => {
   return (
     <div className="container">
       <NavBar />
-      <FormContainer />
+      {/* <FormContainer /> */}
       <RoutesContainer />
     </div>
   )
