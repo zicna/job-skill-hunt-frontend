@@ -4,6 +4,7 @@ import { clearLocalStorage } from '../src/helpers/LocalStorageHelpers'
 
 import Header from './pages/Header'
 import Footer from './pages/Footer'
+import RoutesContainer from './containers/RoutesContainer'
 import MainContainer from './containers/MainContainer'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <div className="App">
       <Router>
         <Header />
+        <RoutesContainer />
         <MainContainer />
         <Footer />
       </Router>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
 import { loggedIn } from '../helpers/AuthHelpers'
@@ -7,39 +7,42 @@ import { loggedIn } from '../helpers/AuthHelpers'
 import About from '../pages/About'
 import Contact from '../pages/Contact'
 import Legacy from '../pages/Legacy'
-import AboutClass from '../pages/AboutClass'
 import UserHomePage from '../pages/UserHomePage'
 import PublicHomePage from '../pages/PublicHomePage'
 import FormContainer from '../containers/FormContainer'
 
+import ProtectedRoute from './ProtectedRoute'
+import SignUpForm from '../components/forms/SignUpForm'
+
 const RoutesContainer = () => {
+
+  const [token, setToken] = useState(loggedIn())
+
+  useEffect(()=> setToken(loggedIn()),[])
+
   return (
     <Switch>
-      <Route exact path="/">
-        {/* {() => loggedIn() ? <Redirect to="/about" /> : <Home />} */}
-        {() => (loggedIn() ? <UserHomePage /> : <PublicHomePage />)}
-      </Route>
-      <Route exact path="/about" component={About} />
+      <Route exact path="/" component={(routerProps) => <PublicHomePage {...routerProps}/>}/>
       <Route
         exact
         path="/about"
-        component={(routerProps) => <AboutClass {...routerProps} />}
+        element={
+          <ProtectedRoute token={token}>
+            <About />
+          </ProtectedRoute>
+        }
       />
       <Route
         exact
         path="/contact"
-        render={(renderProps) => <Contact {...renderProps} />}
+        element={
+          <ProtectedRoute token={token}>
+            <Contact />
+          </ProtectedRoute>
+        }
       />
-      <Route
-        exact
-        path="/legacy"
-        children={({ match }) => <Legacy {...match} />}
-      />
-      <Route exact path="/signup">
-        {() => {
-            debugger
-            return loggedIn() ? <Redirect to="/" /> : <FormContainer />}}
-      </Route>
+      <Route exact path="/signup" component={(routerProps) => <SignUpForm {...routerProps} /> } />
+        
     </Switch>
   )
 }
